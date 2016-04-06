@@ -7,7 +7,7 @@ export default class UserData extends Component {
   render() {
     return (
       <h1>
-        UserData
+        {this.props.username}
       </h1>
     )
   }
