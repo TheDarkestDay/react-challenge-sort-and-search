@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from './components/Button';
+import UserList from './components/UserList';
 
 
 export default class App extends Component {
@@ -40,12 +40,19 @@ export default class App extends Component {
       phrase: phrases[parseInt(Math.random() * phrases.length)]
     });
   }
+  
+  renderUserList() {
+    let records = [];
+    for (let i=0;i<5;i++) {
+      records.push(<UserList />);
+    }
+    return records;
+  }
 
   render() {
     return (
       <div className="container app">
-        <Button count={this.state.count} update={this.updateBtn.bind(this)} />
-        <p style={{marginTop: 2 + 'rem'}}>{this.state.phrase}</p>
+          <UserList />
       </div>
     );
   }
