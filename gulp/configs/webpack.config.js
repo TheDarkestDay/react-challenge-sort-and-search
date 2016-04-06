@@ -13,5 +13,10 @@ module.exports = {
       include: path.join(__dirname, '../../js'),
       exclude: /node_modules/
     }]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    })
+  ]
 };
