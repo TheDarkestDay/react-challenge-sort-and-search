@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import UserData from './UserData';
+import SearchBar from './SearchBar';
 
 export default class UserList extends Component {
   constructor() {
     super();
     this.state = {
-      users: []
+      users: [],
+      filter: ''
     }
   }
   componentDidMount() {
@@ -20,13 +22,20 @@ export default class UserList extends Component {
   renderUserData() {
     let records = [];
     for (let i=0;i<this.state.users.length;i++) {
-      records.push(<UserData key={i} username={this.state.users[i].name}/>);
+      if (this.state.users[i].name.indexOf(this.state.filter) != -1 || this.state.filter == '')
+        records.push(<UserData key={i} username={this.state.users[i].name}/>);
     }
     return records;
+  }
+  updateFilter(val) {
+    this.setState({
+       filter: val
+    });
   }
   render() {
     return (
       <div>
+        <SearchBar handleChange={this.updateFilter.bind(this)}/>
         {this.renderUserData()}
       </div>
     )
