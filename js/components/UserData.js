@@ -6,7 +6,7 @@ export default class UserData extends Component {
   }
   render() {
     return (
-      <h1>
+      <h1 onClick={this.props.handleClick.bind(null,this.props.userInfo)}>
         {this.props.username}
       </h1>
     )
